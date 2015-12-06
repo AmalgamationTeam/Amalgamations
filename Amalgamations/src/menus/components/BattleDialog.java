@@ -262,7 +262,7 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
 
             // Animate the line off of the top of the screen.
             label.slideY(-getHeight() / 2 - label.getHeight() / 2, 
-                    ANIMATION_TIME).then(() -> remove(label)).await();
+                    ANIMATION_TIME).then(() -> remove(label));
             
             // Add the line to the formatted script.
             formattedScript.append(util.Abilities.cutDelimiter(line))
@@ -352,23 +352,23 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
         // Set the player's Abilities.
         if (player.getAbilities()[0] != null)
             AbilPanel1.setAbility(player.getAbilities()[0]);
-        else
-            AbilPanel1.setVisible(false);
+//        else
+//            AbilPanel1.setVisible(false);
         
         if (player.getAbilities()[1] != null)
             AbilPanel2.setAbility(player.getAbilities()[1]);
-        else
-            AbilPanel2.setVisible(false);
+//        else
+//            AbilPanel2.setVisible(false);
         
         if (player.getAbilities()[2] != null)
             AbilPanel3.setAbility(player.getAbilities()[2]);
-        else
-            AbilPanel3.setVisible(false);
+//        else
+//            AbilPanel3.setVisible(false);
         
         if (player.getAbilities()[3] != null)
             AbilPanel4.setAbility(player.getAbilities()[3]);
-        else
-            AbilPanel4.setVisible(false);
+//        else
+//            AbilPanel4.setVisible(false);
     }
     
     // Sets whether or not all components are enabled.
@@ -457,23 +457,23 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
         // Set the player's Abilities.
         if (player.getAbilities()[0] != null)
             AbilPanel1.setAbility(player.getAbilities()[0]);
-        else
-            AbilPanel1.setVisible(false);
+//        else
+//            AbilPanel1.setVisible(false);
         
         if (player.getAbilities()[1] != null)
             AbilPanel2.setAbility(player.getAbilities()[1]);
-        else
-            AbilPanel2.setVisible(false);
+//        else
+//            AbilPanel2.setVisible(false);
         
         if (player.getAbilities()[2] != null)
             AbilPanel3.setAbility(player.getAbilities()[2]);
-        else
-            AbilPanel3.setVisible(false);
+//        else
+//            AbilPanel3.setVisible(false);
         
         if (player.getAbilities()[3] != null)
             AbilPanel4.setAbility(player.getAbilities()[3]);
-        else
-            AbilPanel4.setVisible(false);        
+//        else
+//            AbilPanel4.setVisible(false);        
     }
     
     // <editor-fold desc="GUI Code" defaultstate="collapsed" >
@@ -703,8 +703,8 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
             public void run() {
                 startBattle(
                         new amalgamation.battle.AIController(),
-                        util.Amalgamations.load("Witch"),
-                        util.Amalgamations.load("NYEH!")
+                        util.Amalgamations.load("Barbara the Slightly On Edge"),
+                        util.Amalgamations.load("Linda the Wildly Offensive")
                 );
             }
         });
