@@ -63,7 +63,7 @@ public class AbilityPanel extends acomponent.AComponent {
         CooldownLabel = new javax.swing.JLabel();
         PowerAccuracyLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 2, 2, new java.awt.Color(102, 102, 102)));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,17 +79,17 @@ public class AbilityPanel extends acomponent.AComponent {
 
         NameLabel.setBackground(new java.awt.Color(255, 255, 255));
         NameLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 28)); // NOI18N
-        NameLabel.setForeground(new java.awt.Color(244, 67, 54));
+        NameLabel.setForeground(new java.awt.Color(204, 204, 204));
         NameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NameLabel.setText("Punch");
 
         CooldownLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        CooldownLabel.setForeground(new java.awt.Color(96, 125, 139));
+        CooldownLabel.setForeground(new java.awt.Color(204, 204, 204));
         CooldownLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CooldownLabel.setText("Cooldown: 3 Turns");
 
         PowerAccuracyLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        PowerAccuracyLabel.setForeground(new java.awt.Color(97, 97, 97));
+        PowerAccuracyLabel.setForeground(new java.awt.Color(204, 204, 204));
         PowerAccuracyLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PowerAccuracyLabel.setText("Power: 25    Accuracy: 100");
 
@@ -127,6 +127,8 @@ public class AbilityPanel extends acomponent.AComponent {
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if (ability == null)
+            return;
         // Check if the click was a left or right click.
         if (javax.swing.SwingUtilities.isLeftMouseButton(evt))
             clicked();
@@ -261,6 +263,12 @@ public class AbilityPanel extends acomponent.AComponent {
                 PowerAccuracyLabel.setForeground(TEXT_DISABLED);
                 CooldownLabel.setForeground(TEXT_DISABLED);
             }
+        }
+        else {
+            setBackground(BG_DISABLED);
+            NameLabel.setForeground(BG_DISABLED);
+            PowerAccuracyLabel.setForeground(BG_DISABLED);
+            CooldownLabel.setForeground(BG_DISABLED);
         }
     }
     
