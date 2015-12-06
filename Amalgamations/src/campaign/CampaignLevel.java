@@ -166,12 +166,66 @@ public class CampaignLevel implements Serializable {
     }
     
     /**
+     * Returns the Arms that can be used when generating Amalgamations.
+     * 
+     * @return the Arms that can be used when generating Amalgamations
+     */
+    public Arm[] getArms() {
+        return arms;
+    }
+    
+    /**
+     * Returns the Bodies that can be used when generating Amalgamations.
+     * 
+     * @return the Bodies that can be used when generating Amalgamations
+     */
+    public Body[] getBodies() {
+        return bodies;
+    }
+    
+    /**
+     * Returns the Legs that can be used when generating Amalgamations.
+     * 
+     * @return the Legs that can be used when generating Amalgamations
+     */
+    public Leg[] getLegs() {
+        return legs;
+    }
+    
+    /**
+     * Returns the Heads that can be used when generating Amalgamations.
+     * 
+     * @return the Heads that can be used when generating Amalgamations
+     */
+    public Head[] getHeads() {
+        return heads;
+    }
+    
+    /**
      * Retrieves the boss of the level.
      * 
      * @return the boss of the level
      */
     public Amalgamation getBoss() {
         return boss;
+    }
+    
+    /**
+     * Retrieves the level of the Guards.
+     * 
+     * @return the level of the Guards
+     */
+    public int getGuardsLevel() {
+        return guardsLevel;
+    }
+    
+    /**
+     * Retrieves the level of the Minions.
+     * 
+     * @return the level of the Minions
+     */
+    public int getMinionsLevel() {
+        return minionsLevel;
     }
     
     /**
