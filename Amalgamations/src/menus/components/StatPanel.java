@@ -6,11 +6,15 @@ import amalgamation.Amalgamation;
  * This class is used to display the currently selected Amalgamation's stats 
  * in a panel to the right of the display of the Amalgamation in the main menu
  *
- * @author Adam Meanor
+ * @author Adam Meanor, Caleb Rush
  */
 public class StatPanel extends acomponent.AComponent {
+    private Amalgamation amalgamation;
     
-    Amalgamation amalgamation;
+    // Default constructor for compatibility with GUI editor.
+    public StatPanel() {
+        initComponents();
+    }
 
     /**
      * Creates new form StatPanel
@@ -25,7 +29,8 @@ public class StatPanel extends acomponent.AComponent {
         this.displayDefenseStat(amalgamation);
         this.displaySpeedStat(amalgamation);
     }
-
+    
+    // <editor-fold desc="GUI Code" defaultstate="collapsed" >
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,25 +52,21 @@ public class StatPanel extends acomponent.AComponent {
         healthLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         healthLabel.setForeground(new java.awt.Color(76, 175, 80));
         healthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        healthLabel.setText("jLabel1");
         add(healthLabel);
 
         attackLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         attackLabel.setForeground(new java.awt.Color(244, 67, 54));
         attackLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        attackLabel.setText("jLabel2");
         add(attackLabel);
 
         defenseLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         defenseLabel.setForeground(new java.awt.Color(33, 150, 243));
         defenseLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        defenseLabel.setText("jLabel3");
         add(defenseLabel);
 
         speedLabel.setBackground(new java.awt.Color(66, 66, 66));
         speedLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         speedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        speedLabel.setText("jLabel4");
         add(speedLabel);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -76,6 +77,7 @@ public class StatPanel extends acomponent.AComponent {
     private javax.swing.JLabel healthLabel;
     private javax.swing.JLabel speedLabel;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
     
     /**
      * Retrieves the health stat for the currently displayed Amalgamation 
@@ -117,12 +119,20 @@ public class StatPanel extends acomponent.AComponent {
         speedLabel.setText("Speed: " + amalgamation.getSpeed());
     }
     
-    public static void main(String[] args) {
-        acomponent.ADialog dialog = new acomponent.ADialog(null, true);
-        StatPanel sPanel = new StatPanel(util.Amalgamations.load("KILL ME"));
-        dialog.add(sPanel);
-        dialog.pack();
-        dialog.showDialog();
+    public void removeAmalgamation() {
+        this.amalgamation = null;
+        healthLabel.setText("");
+        attackLabel.setText("");
+        defenseLabel.setText("");
+        speedLabel.setText("");
     }
-
+    
+    // Setter method for the amalgamation.
+    public void setAmalgamation(Amalgamation amalgamation) {
+        this.amalgamation = amalgamation;
+        this.displayHealthStat(amalgamation);
+        this.displayAttackStat(amalgamation);
+        this.displayDefenseStat(amalgamation);
+        this.displaySpeedStat(amalgamation);
+    }
 }

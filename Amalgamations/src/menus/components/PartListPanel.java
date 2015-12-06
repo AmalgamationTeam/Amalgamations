@@ -164,7 +164,7 @@ public class PartListPanel extends javax.swing.JPanel {
         RotationPanel = new javax.swing.JPanel();
         RotationSlider = new javax.swing.JSlider();
 
-        setPreferredSize(new java.awt.Dimension(48, 342));
+        setPreferredSize(new java.awt.Dimension(400, 450));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 150, 243), 2));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -193,7 +193,7 @@ public class PartListPanel extends javax.swing.JPanel {
         RotationPanel.setLayout(RotationPanelLayout);
         RotationPanelLayout.setHorizontalGroup(
             RotationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(RotationSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+            .addComponent(RotationSlider, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
         RotationPanelLayout.setVerticalGroup(
             RotationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +212,7 @@ public class PartListPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(RotationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
