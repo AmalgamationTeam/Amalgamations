@@ -97,16 +97,17 @@ public class MainMenu extends javax.swing.JPanel {
 
     CampaignButton.setBackground(new java.awt.Color(33, 150, 243));
     CampaignButton.setActionListener(e -> {
-        acomponent.ADialog.createMessageDialog(
-            null,
-            "The Campaign mode has not been created yet.",
-            "Curses!"
+        if (amalgamation == null)
+        acomponent.ADialog.createMessageDialog(null,
+            "You must load an Amalgamation first!"
         ).showDialog(
-            (int)CampaignButton.getLocationOnScreen().getX() +
-            CampaignButton.getWidth() / 2,
-            (int)CampaignButton.getLocationOnScreen().getY() +
-            CampaignButton.getHeight() / 2
+            (int)LoadButton.getLocationOnScreen().getX() + LoadButton.getWidth() / 2,
+            (int)LoadButton.getLocationOnScreen().getY() + LoadButton.getHeight() / 2
         );
+        else
+        // Start the campaign with the selected amalgamation.
+        menus.components.CampaignDialog.startCampaign(null,
+            amalgamation.getAmalgamation());
     });
     CampaignButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
     CampaignButton.setText("Campaign");
