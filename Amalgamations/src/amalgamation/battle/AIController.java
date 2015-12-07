@@ -18,12 +18,16 @@ public class AIController implements Controller {
     @Override
     public void endBattle(Amalgamation player, Amalgamation opponent, 
             String[] script) {
-        // Check if the last line of the script mentions the opponent being
+        // Check if the any line of the script mentions the opponent being
         // defeated.
-        if (script[script.length - 1].equals(player.getName() 
-                + " was defeated!"))
-            // Set the most recent battle as won.
-            battleWon = true;
+        battleWon = false;
+        for (String line : script)
+            if (line.equals(opponent.getName()
+                + " was defeated!")) {
+                // Set the most recent battle as won.
+                battleWon = true;
+                break;
+            }
     }
     
     @Override
