@@ -3,6 +3,7 @@ package menus.components;
 import amalgamation.Amalgamation;
 
 import campaign.CampaignLevel;
+import java.awt.Color;
 
 import java.awt.Rectangle;
 
@@ -75,6 +76,7 @@ public class CampaignDialog extends acomponent.ADialog {
     // Animates the current level in.
     private void animateLevelIn() {
         // Set the panels.
+        
         setAmalgamations();
         // Animate the boss in.
         BossPanel.enter(bossBounds).then(() -> {
@@ -155,7 +157,7 @@ public class CampaignDialog extends acomponent.ADialog {
                                 // Then animate the buttons in.
                                 .then(this::animateButtonsIn);
                     });
-        });
+        });     
     }
     
     private void animateLevelOut() {
@@ -199,9 +201,11 @@ public class CampaignDialog extends acomponent.ADialog {
                 // Initiate the battle.
                 currentLevel.battleBoss(playerAmalgamation);
                 // Check if the minion was defeated for the first time.
-                if (!alreadyDefeated && currentLevel.isBossDefeated())
+                if (!alreadyDefeated && currentLevel.isBossDefeated()){
                     // See if the next level can be unlocked.
+                    setDefeated();
                     unlockNextLevel();
+                }
             }, 
                 new java.awt.Color(76,175,80));
         // Add a Cancel button.
@@ -246,10 +250,13 @@ public class CampaignDialog extends acomponent.ADialog {
                 dialog.hideDialog();
                 // Initiate the battle.
                 currentLevel.battleGuard(index, playerAmalgamation);
+               
                 // Check if the minion was defeated for the first time.
-                if (!alreadyDefeated && currentLevel.isGuardDefeated(index))
+                if (!alreadyDefeated && currentLevel.isGuardDefeated(index)){
                     // See if the boss can be unlocked.
+                    setDefeated();
                     unlockBoss();
+                }
             }, 
                 new java.awt.Color(76,175,80));
         // Add a Cancel button.
@@ -295,9 +302,14 @@ public class CampaignDialog extends acomponent.ADialog {
                 // Initiate the battle.
                 currentLevel.battleMinion(index, playerAmalgamation);
                 // Check if the minion was defeated for the first time.
-                if (!alreadyDefeated && currentLevel.isMinionDefeated(index))
+               
+                    
+                
+                if (!alreadyDefeated && currentLevel.isMinionDefeated(index)) {
                     // See if the guards can be unlocked.
+                    setDefeated();
                     unlockGuards();
+                }
             }, 
                 new java.awt.Color(76,175,80));
         // Add a Cancel button.
@@ -453,7 +465,7 @@ public class CampaignDialog extends acomponent.ADialog {
          * so that their images are generated before the animation is started.
          * If this isn't done, the animation will be choppy.
          */
-        // Set the minions.
+        // Set the minions. 
         Minion1Panel.setAmalgamation(currentLevel.getMinions()[0]);
         currentLevel.getMinions()[0].getFullImage();
         Minion2Panel.setAmalgamation(currentLevel.getMinions()[1]);
@@ -480,6 +492,7 @@ public class CampaignDialog extends acomponent.ADialog {
             BossPanel.setAmalgamation(currentLevel.getBoss());
             currentLevel.getBoss().getFullImage();
         }
+        setDefeated();
     }
     
     // Sets the enabled status of all components.
@@ -498,6 +511,53 @@ public class CampaignDialog extends acomponent.ADialog {
         Guard3Panel.setEnabled(enabled);
         BossPanel.setEnabled(enabled);
     }
+    
+    public void setDefeated(){
+                    if(currentLevel.isMinionDefeated(0))
+                    {
+                        Minion1Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isMinionDefeated(1))
+                    {
+                        Minion2Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isMinionDefeated(2))
+                    {
+                        Minion3Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isMinionDefeated(3))
+                    {
+                        Minion4Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isMinionDefeated(4))
+                    {
+                        Minion5Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isMinionDefeated(5))
+                    {
+                        Minion6Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isGuardDefeated(0))
+                    {
+                        Guard1Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isGuardDefeated(1))
+                    {
+                        Guard2Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isGuardDefeated(2))
+                    {
+                        Guard3Panel.setBackground(Color.red);
+                    }
+                    if(currentLevel.isBossDefeated())
+                    {
+                        BossPanel.setBackground(Color.red);
+                    }
+                   repaint();
+        
+    }
+    
+    
     
     @Override
     public void showDialog() {
@@ -679,6 +739,7 @@ public class CampaignDialog extends acomponent.ADialog {
         PreviousButton = new acomponent.AButton();
         BossPanel = new menus.components.AmalgamationPanel();
         Guard1Panel = new menus.components.AmalgamationPanel();
+        jLabel1 = new javax.swing.JLabel();
         Guard3Panel = new menus.components.AmalgamationPanel();
         Guard2Panel = new menus.components.AmalgamationPanel();
         Minion2Panel = new menus.components.AmalgamationPanel();
@@ -757,15 +818,21 @@ public class CampaignDialog extends acomponent.ADialog {
         Guard1Panel.setClickAction(() -> battleGuard(0));
         Guard1Panel.setHighlightColor(new java.awt.Color(76, 175, 80));
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout Guard1PanelLayout = new javax.swing.GroupLayout(Guard1Panel);
         Guard1Panel.setLayout(Guard1PanelLayout);
         Guard1PanelLayout.setHorizontalGroup(
             Guard1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 67, Short.MAX_VALUE)
+            .addGroup(Guard1PanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 33, Short.MAX_VALUE))
         );
         Guard1PanelLayout.setVerticalGroup(
             Guard1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 67, Short.MAX_VALUE)
+            .addGroup(Guard1PanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 53, Short.MAX_VALUE))
         );
 
         Guard3Panel.setClickAction(() -> battleGuard(2));
@@ -1000,6 +1067,7 @@ public class CampaignDialog extends acomponent.ADialog {
     private acomponent.ALabel NameLabel;
     private acomponent.AButton NextButton;
     private acomponent.AButton PreviousButton;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 }

@@ -331,7 +331,7 @@ public class CampaignLevel implements Serializable {
      *         was out of range
      */
     public boolean isGuardDefeated(int index) {
-        return index > 0 
+        return index >= 0 
                 && index < guardsDefeated.length 
                 && guardsDefeated[index];
     }
@@ -357,7 +357,7 @@ public class CampaignLevel implements Serializable {
      *         was out of range
      */
     public boolean isMinionDefeated(int index) {
-        return index > 0 
+        return index >= 0 
                 && index < minionsDefeated.length 
                 && minionsDefeated[index];
     }
