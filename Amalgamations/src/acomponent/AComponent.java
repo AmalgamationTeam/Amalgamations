@@ -317,6 +317,13 @@ public class AComponent extends JPanel {
         this.background = background;
     }
     
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (!enabled)
+            highlightRadius = 0;
+    }
+    
     /**
      * Sets the color of the highlight.
      * 
