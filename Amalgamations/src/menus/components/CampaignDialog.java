@@ -170,7 +170,19 @@ public class CampaignDialog extends acomponent.ADialog {
         Minion3Panel.translateY(getHeight(), 250);
         Minion4Panel.translateY(getHeight(), 250);
         Minion5Panel.translateX(getWidth(), 250);
-        Minion6Panel.translateX(getWidth(), 250);
+        Minion6Panel.translateX(getWidth(), 250).then(() -> {
+            // Remove the Amalgamations fromt the panels.
+            BossPanel.setAmalgamation(null);
+            Guard1Panel.setAmalgamation(null);
+            Guard2Panel.setAmalgamation(null);
+            Guard3Panel.setAmalgamation(null);
+            Minion1Panel.setAmalgamation(null);
+            Minion2Panel.setAmalgamation(null);
+            Minion3Panel.setAmalgamation(null);
+            Minion4Panel.setAmalgamation(null);
+            Minion5Panel.setAmalgamation(null);
+            Minion6Panel.setAmalgamation(null);
+        });
     }
     
     // Confirms that the user wants to battle the boss and initiates the
@@ -557,12 +569,12 @@ public class CampaignDialog extends acomponent.ADialog {
         Guard3Panel.exit().then(() -> {
             
             // Set the guards in their panels and load their images.
-            Guard1Panel.setAmalgamation(currentLevel.getMinions()[0]);
-            currentLevel.getMinions()[0].getFullImage();
-            Guard2Panel.setAmalgamation(currentLevel.getMinions()[1]);
-            currentLevel.getMinions()[1].getFullImage();
-            Guard3Panel.setAmalgamation(currentLevel.getMinions()[2]);
-            currentLevel.getMinions()[2].getFullImage();
+            Guard1Panel.setAmalgamation(currentLevel.getGuards()[0]);
+            currentLevel.getGuards()[0].getFullImage();
+            Guard2Panel.setAmalgamation(currentLevel.getGuards()[1]);
+            currentLevel.getGuards()[1].getFullImage();
+            Guard3Panel.setAmalgamation(currentLevel.getGuards()[2]);
+            currentLevel.getGuards()[2].getFullImage();
             
             // Animate the guard panels in.
             Guard1Panel.enter(guard1Bounds);
