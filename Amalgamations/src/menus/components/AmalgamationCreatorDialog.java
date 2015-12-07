@@ -283,13 +283,14 @@ public class AmalgamationCreatorDialog extends acomponent.ADialog {
                     0 : getWidth();
             if (in) {
                 x = -getWidth();
-                Animator.animateValue(x, endX, 250, 
-                        newX -> {
-                            x = (int)newX;
-                            repaint();
-                        },
-                        null
-                );
+                Animator.waitFor(
+                    Animator.animateValue(x, endX, 250, 
+                            newX -> {
+                                x = (int)newX;
+                                repaint();
+                            },
+                            null
+                ));
             }
             else
                 Animator.waitFor(
