@@ -719,8 +719,6 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
 
                     jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Boss"));
 
-                    BossPanel.removeMouseListener(BossPanel.getMouseListeners()[0]);
-
                     javax.swing.GroupLayout BossPanelLayout = new javax.swing.GroupLayout(BossPanel);
                     BossPanel.setLayout(BossPanelLayout);
                     BossPanelLayout.setHorizontalGroup(

@@ -574,9 +574,6 @@
           </Layout>
           <SubComponents>
             <Container class="menus.components.AmalgamationPanel" name="BossPanel">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="BossPanel.removeMouseListener(BossPanel.getMouseListeners()[0]);"/>
-              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
