@@ -182,33 +182,22 @@ public class Battle {
                     opponentAmalgamation.getName()));
             script.add(String.format("%s gained %d EXP!", 
                     playerAmalgamation.getName(), 
-                    opponentAmalgamation.getDefeatedExperience()));
-            script.add(String.format("%s gained %d EXP!", 
-                    opponentAmalgamation.getName(), 
-                    playerAmalgamation.getDefeatedExperience()/10));
-            
+                    opponentAmalgamation.getDefeatedExperience()));            
         }
-        else{
+        else
             script.add(String.format("%s was defeated!", 
                     playerAmalgamation.getName()));
-            script.add(String.format("%s gained %d EXP!", 
-                    playerAmalgamation.getName(), 
-                    opponentAmalgamation.getDefeatedExperience()/10));
-            script.add(String.format("%s gained %d EXP!", 
-                    opponentAmalgamation.getName(), 
-                    playerAmalgamation.getDefeatedExperience()));
-        }
+        
+        // Alert the controllers that the Battle has ended.
         new Thread(() -> opponent.endBattle(opponentAmalgamation, playerAmalgamation, 
                 script.toArray(new String[0]))).start();
-        // Alert the controllers that the Battle has ended.
         player.endBattle(playerAmalgamation, opponentAmalgamation, 
                 script.toArray(new String[0]));
         
-        if (playerWon){
+        if (playerWon)
             // Raise the player's experience.
             playerAmalgamation.gainExp(
                     opponentAmalgamation.getDefeatedExperience());
-        }   
         
         // Reset the amalgamations current stats.
         playerAmalgamation.resetCurrentStats();
