@@ -316,6 +316,19 @@ public class CampaignLevel implements Serializable {
     }
     
     /**
+     * Returns whether or not all of the Guards are defeated.
+     * 
+     * @return whether or not all of the Guards are defeated
+     */
+    public boolean isGuardsDefeated() {
+        for (boolean b : guardsDefeated)
+            if (!b)
+                return false;
+        
+        return true;
+    }
+    
+    /**
      * Returns whether or not the minion at the specified index is defeated.
      * 
      * @param index the index of the minion in the range of 0 - numMinions - 1
@@ -326,6 +339,19 @@ public class CampaignLevel implements Serializable {
         return index > 0 
                 && index < minionsDefeated.length 
                 && minionsDefeated[index];
+    }
+    
+    /**
+     * Returns whether or not all of the Minions are defeated.
+     * 
+     * @return whether or not all of the Minions are defeated
+     */
+    public boolean isMinionsDefeated() {
+        for (boolean b : minionsDefeated)
+            if (!b)
+                return false;
+        
+        return true;
     }
     
     /**
