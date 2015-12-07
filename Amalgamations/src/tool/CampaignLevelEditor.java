@@ -324,11 +324,11 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
         try {
             util.CampaignLevels.saveCampaignLevel(
                     new campaign.CampaignLevel(
-                            NameField.getText(), 
+                            NameField.getText(),
+                            6,
+                            3,
                             Integer.parseInt(MinionsLevelField.getText()), 
-                            5, 
                             Integer.parseInt(GuardsLevelField.getText()), 
-                            5, 
                             BossPanel.getAmalgamation(), 
                             /**
                              * I deeply apologize for the absurdity of the
