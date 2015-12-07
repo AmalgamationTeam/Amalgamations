@@ -132,6 +132,21 @@ public class CampaignLevel implements Serializable {
     }
     
     /**
+     * Battles the boss.
+     * 
+     * @param playerAmalgamation 
+     */
+    public void battleBoss(Amalgamation playerAmalgamation) {
+        // Set up a new Battle with the boss being controlled by an AI and the
+        // player controlling their Amalgamation.
+        AIController ai = new AIController();
+        BattleDialog.startBattle(ai, playerAmalgamation, boss);
+        // Check if the boss was defeated.
+        if (!ai.isBattleWon())
+              bossDefeated = true;  
+    }
+    
+    /**
      * Battles the guards at the specified index.
      * 
      * @param index the index of the minion in the range 0 - numGuards - 1
@@ -146,6 +161,9 @@ public class CampaignLevel implements Serializable {
         // player controlling their Amalgamation.
         AIController ai = new AIController();
         BattleDialog.startBattle(ai, playerAmalgamation, guards[index]);
+        // Check if the guard was defeated.
+        if (!ai.isBattleWon())
+            guardsDefeated[index] = true;
     }
     
     /**
@@ -163,6 +181,9 @@ public class CampaignLevel implements Serializable {
         // player controlling their Amalgamation.
         AIController ai = new AIController();
         BattleDialog.startBattle(ai, playerAmalgamation, minions[index]);
+        // Check if the minion was defeated.
+        if (!ai.isBattleWon())
+            minionsDefeated[index] = true;
     }
     
     /**
