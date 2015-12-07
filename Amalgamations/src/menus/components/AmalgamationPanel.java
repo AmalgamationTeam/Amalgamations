@@ -19,7 +19,7 @@ public class AmalgamationPanel extends acomponent.AComponent {
     
     public AmalgamationPanel() {
         initComponents();
-        setBackground(Color.WHITE);
+        setBackground(new Color(204, 204, 204));
         // Set the highlight color to a pleasant shade of red.
         setHighlightColor(new java.awt.Color(244, 67, 54));
         // Initialize the mouse listener.
@@ -80,6 +80,8 @@ public class AmalgamationPanel extends acomponent.AComponent {
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
+                if (amal == null)
+                    return;
                 // Run the Runnable.
                 if (clickAction != null)
                     clickAction.run();
@@ -87,6 +89,8 @@ public class AmalgamationPanel extends acomponent.AComponent {
             
             @Override
             public void mouseEntered(java.awt.event.MouseEvent e) {
+                if (amal == null)
+                    return;
                 // Change the cursor.
                 setCursor(java.awt.Cursor.getPredefinedCursor(
                         java.awt.Cursor.HAND_CURSOR));
@@ -97,6 +101,8 @@ public class AmalgamationPanel extends acomponent.AComponent {
             
             @Override
             public void mouseExited(java.awt.event.MouseEvent e) {
+                if (amal == null)
+                    return;
                 // Change the cursor.
                 setCursor(java.awt.Cursor.getDefaultCursor());
                 // Dehighlight the panel.
@@ -138,6 +144,10 @@ public class AmalgamationPanel extends acomponent.AComponent {
      */
     public void setAmalgamation(Amalgamation amal) {
         this.amal = amal;
+        if (amal == null)
+            setBackground(new Color(204, 204, 204));
+        else
+            setBackground(Color.WHITE);
     }
     
     /**
