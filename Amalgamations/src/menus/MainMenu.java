@@ -10,7 +10,11 @@ public class MainMenu extends javax.swing.JPanel {
     private menus.components.AmalgamationPanel amalgamation;
     private menus.components.StatPanel statPanel;
     private menus.components.LevelPanel levelPanel;
-
+    private menus.components.AbilityPanel abilityPanel1;
+    private menus.components.AbilityPanel abilityPanel2;
+    private menus.components.AbilityPanel abilityPanel3;
+    private menus.components.AbilityPanel abilityPanel4;
+    
     /**
      * Creates new form MainMenu
      */
@@ -263,19 +267,26 @@ public class MainMenu extends javax.swing.JPanel {
         // Delete the Amalgamation.
         util.Amalgamations.delete(amalgamation.getAmalgamation().getName());
         
-        // Remove the amalgamation.
-        levelPanel.translateX(getWidth(), 500);
-        statPanel.translateX(getWidth(), 500);
-        amalgamation.slideX(-400, 500).then(() -> {
-            remove(amalgamation);
-            remove(levelPanel);
-            remove(statPanel);
-                
-            acomponent.ADialog.createMessageDialog(null, 
-                amalgamation.getAmalgamation().getName() + " is gone forever."
-                + " Hope you're happy.", "I am. Mwahaha").showDialog();
-            amalgamation = null;
-        });
+        levelPanel.translateX(getWidth(), 300);
+            statPanel.translateX(getWidth(), 300);
+            abilityPanel1.setEnabled(false);
+            abilityPanel2.setEnabled(false);
+            abilityPanel3.setEnabled(false);
+            abilityPanel4.setEnabled(false);
+            abilityPanel1.translateX(-abilityPanel1.getWidth(), 300);
+            abilityPanel2.translateX(getWidth(), 300);
+            abilityPanel3.translateX(-abilityPanel3.getWidth(), 300);
+            abilityPanel4.translateX(getWidth(), 300);
+            amalgamation.slideX(-400, 300).then(() -> {
+                remove(amalgamation);
+                remove(levelPanel);
+                remove(statPanel);
+                remove(abilityPanel1);
+                remove(abilityPanel2);
+                remove(abilityPanel3);
+                remove(abilityPanel4);
+                amalgamation = null;
+            });
     }
     
     // Animates the components into the panel.
@@ -314,10 +325,22 @@ public class MainMenu extends javax.swing.JPanel {
             // Remove the amalgamation.
             levelPanel.translateX(getWidth(), 300);
             statPanel.translateX(getWidth(), 300);
+            abilityPanel1.setEnabled(false);
+            abilityPanel2.setEnabled(false);
+            abilityPanel3.setEnabled(false);
+            abilityPanel4.setEnabled(false);
+            abilityPanel1.translateX(-abilityPanel1.getWidth(), 300);
+            abilityPanel2.translateX(getWidth(), 300);
+            abilityPanel3.translateX(-abilityPanel3.getWidth(), 300);
+            abilityPanel4.translateX(getWidth(), 300);
             amalgamation.slideX(-400, 300).then(() -> {
                 remove(amalgamation);
                 remove(levelPanel);
                 remove(statPanel);
+                remove(abilityPanel1);
+                remove(abilityPanel2);
+                remove(abilityPanel3);
+                remove(abilityPanel4);
                 amalgamation = null;
                 
                 // Call the method again now that the amalgamation has been
@@ -344,6 +367,48 @@ public class MainMenu extends javax.swing.JPanel {
         amalgamation.translate(AmalPanel.getX(), AmalPanel.getY(), 400);
         amalgamation.transform(AmalPanel.getWidth(), AmalPanel.getHeight(),
                 400).then(() -> {
+                    abilityPanel1 = new menus.components.AbilityPanel(amal.getAbilities()[0]);
+                    abilityPanel1.setEnabled(false);
+                    add(abilityPanel1);
+                    abilityPanel1.setBounds(amalgamation.getBounds());
+                    abilityPanel1.setSize(250, 105);
+                    abilityPanel1.validate();
+                    abilityPanel1.translate((getWidth() - 500)/3, amalgamation.getY() 
+                            + amalgamation.getHeight() + (300 - 210)/3, 250).then(() -> {
+                    
+                    abilityPanel2 = new menus.components.AbilityPanel(amal.getAbilities()[1]);
+                    abilityPanel2.setEnabled(false);
+                    add(abilityPanel2);
+                    abilityPanel2.setBounds(abilityPanel1.getBounds());
+                    abilityPanel2.setSize(250, 105);
+                    abilityPanel2.validate();
+                    abilityPanel2.translate(2 * ((getWidth() - 500)/3) + 250, 
+                            amalgamation.getY() + amalgamation.getHeight() 
+                                    + (300 - 210)/3, 250);
+                    
+                    abilityPanel3 = new menus.components.AbilityPanel(amal.getAbilities()[2]);
+                    abilityPanel3.setEnabled(false);
+                    add(abilityPanel3);
+                    abilityPanel3.setBounds(abilityPanel1.getBounds());
+                    abilityPanel3.setSize(250, 105);
+                    abilityPanel3.validate();
+                    abilityPanel3.translate((getWidth() - 500)/3, amalgamation.getY() 
+                            + amalgamation.getHeight() + 2 * ((300 - 210)/3) + 105, 250);
+                    
+                    abilityPanel4 = new menus.components.AbilityPanel(amal.getAbilities()[2]);
+                    abilityPanel4.setEnabled(false);
+                    add(abilityPanel4);
+                    abilityPanel4.setBounds(abilityPanel1.getBounds());
+                    abilityPanel4.setSize(250, 105);
+                    abilityPanel4.validate();
+                    abilityPanel4.translate(2 * ((getWidth() - 500)/3) + 250, 
+                            amalgamation.getY() + amalgamation.getHeight() 
+                                    + 2 * ((300 - 210)/3) + 105, 250);
+                    abilityPanel1.removeMouseListener(abilityPanel1.getMouseListeners()[0]);
+                    abilityPanel2.removeMouseListener(abilityPanel2.getMouseListeners()[0]);
+                    abilityPanel3.removeMouseListener(abilityPanel3.getMouseListeners()[0]);
+                    abilityPanel4.removeMouseListener(abilityPanel4.getMouseListeners()[0]);
+                });
                     statPanel = new menus.components.StatPanel(amal);
                     add(statPanel);
                     statPanel.setBounds(amalgamation.getBounds());

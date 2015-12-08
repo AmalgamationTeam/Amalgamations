@@ -130,7 +130,7 @@ public class AbilityPanel extends acomponent.AComponent {
         if (ability == null)
             return;
         // Check if the click was a left or right click.
-        if (javax.swing.SwingUtilities.isLeftMouseButton(evt))
+        if (javax.swing.SwingUtilities.isLeftMouseButton(evt) && isEnabled())
             clicked();
         else if (javax.swing.SwingUtilities.isRightMouseButton(evt))
             showDescription();
@@ -183,7 +183,7 @@ public class AbilityPanel extends acomponent.AComponent {
     
     // Changes the mouse icon and changes the background.
     private void entered() {
-        if (ability != null && ability.isUsable()) {
+        if (ability != null && ability.isUsable() && isEnabled()) {
             stopAnimations();
             highlight(getWidth() / 2, getHeight() / 2, 10);
             setCursor(java.awt.Cursor.getPredefinedCursor(
@@ -211,7 +211,7 @@ public class AbilityPanel extends acomponent.AComponent {
     
     // Changes the mouse icon and changes the background.
     private void exited() {
-        if (ability != null && ability.isUsable()) {
+        if (ability != null && ability.isUsable() && isEnabled()) {
             stopAnimations();
             dehighlight(getWidth() / 2, getHeight() / 2, 0);
             setCursor(java.awt.Cursor.getDefaultCursor());
