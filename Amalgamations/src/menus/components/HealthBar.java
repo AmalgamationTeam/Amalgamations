@@ -203,7 +203,6 @@ public class HealthBar extends acomponent.AComponent {
             this.currentHealth = currentHealth;
             barLength = barLength(currentHealth);
         }
-        System.out.println(barLength);
     }
     
     /**

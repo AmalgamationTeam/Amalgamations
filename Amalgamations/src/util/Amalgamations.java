@@ -163,7 +163,6 @@ public class Amalgamations {
      * @param amal the Amalgamation to save to a file.
      */
     public static void save(Amalgamation amal) {
-        System.out.println(amal.getTargetExperience());
          // Attempt to create the resource file.
         try (java.io.ObjectOutputStream out = new java.io.ObjectOutputStream(
                     new java.io.FileOutputStream(

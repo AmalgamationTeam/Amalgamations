@@ -515,43 +515,43 @@ public class CampaignDialog extends acomponent.ADialog {
     public void setDefeated(){
                     if(currentLevel.isMinionDefeated(0))
                     {
-                        Minion1Panel.setBackground(Color.red);
+                        Minion1Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isMinionDefeated(1))
                     {
-                        Minion2Panel.setBackground(Color.red);
+                        Minion2Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isMinionDefeated(2))
                     {
-                        Minion3Panel.setBackground(Color.red);
+                        Minion3Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isMinionDefeated(3))
                     {
-                        Minion4Panel.setBackground(Color.red);
+                        Minion4Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isMinionDefeated(4))
                     {
-                        Minion5Panel.setBackground(Color.red);
+                        Minion5Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isMinionDefeated(5))
                     {
-                        Minion6Panel.setBackground(Color.red);
+                        Minion6Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isGuardDefeated(0))
                     {
-                        Guard1Panel.setBackground(Color.red);
+                        Guard1Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isGuardDefeated(1))
                     {
-                        Guard2Panel.setBackground(Color.red);
+                        Guard2Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isGuardDefeated(2))
                     {
-                        Guard3Panel.setBackground(Color.red);
+                        Guard3Panel.setBackground(Color.DARK_GRAY);
                     }
                     if(currentLevel.isBossDefeated())
                     {
-                        BossPanel.setBackground(Color.red);
+                        BossPanel.setBackground(Color.DARK_GRAY);
                     }
                    repaint();
         
@@ -739,7 +739,6 @@ public class CampaignDialog extends acomponent.ADialog {
         PreviousButton = new acomponent.AButton();
         BossPanel = new menus.components.AmalgamationPanel();
         Guard1Panel = new menus.components.AmalgamationPanel();
-        jLabel1 = new javax.swing.JLabel();
         Guard3Panel = new menus.components.AmalgamationPanel();
         Guard2Panel = new menus.components.AmalgamationPanel();
         Minion2Panel = new menus.components.AmalgamationPanel();
@@ -818,21 +817,15 @@ public class CampaignDialog extends acomponent.ADialog {
         Guard1Panel.setClickAction(() -> battleGuard(0));
         Guard1Panel.setHighlightColor(new java.awt.Color(76, 175, 80));
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout Guard1PanelLayout = new javax.swing.GroupLayout(Guard1Panel);
         Guard1Panel.setLayout(Guard1PanelLayout);
         Guard1PanelLayout.setHorizontalGroup(
             Guard1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Guard1PanelLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 33, Short.MAX_VALUE))
+            .addGap(0, 67, Short.MAX_VALUE)
         );
         Guard1PanelLayout.setVerticalGroup(
             Guard1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Guard1PanelLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 53, Short.MAX_VALUE))
+            .addGap(0, 67, Short.MAX_VALUE)
         );
 
         Guard3Panel.setClickAction(() -> battleGuard(2));
@@ -1067,7 +1060,6 @@ public class CampaignDialog extends acomponent.ADialog {
     private acomponent.ALabel NameLabel;
     private acomponent.AButton NextButton;
     private acomponent.AButton PreviousButton;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 }
