@@ -62,14 +62,25 @@ public class NetworkDialog extends ADialog {
     // Sets up a NetworkAdapter and waits for another player to connect.
     private void host() {
         // Show a new HostDialog.
-        new HostDialog();
+        HostDialog dialog = new HostDialog();
         hideDialog();
+                // NetworkDialog.this.hideDialog();
+                // If the controller successfully connected, retrieve the
+                // other Amalgamation.
+                Amalgamation opponent = dialog.controller.retrieveAmalgamation();
+                if (opponent != null)
+                    // Create a Battle with the NetworkController as the opposing
+                    // controller.
+                    menus.components.BattleDialog.startBattle(dialog.controller, 
+                            amalgamation, opponent);
     }
     
     // Prompts the user for the host name and port number and attempts to
     // connect to a server socket.
     private void join() {
-        new JoinDialog();
+        JoinDialog dialog = new JoinDialog();
+        if (dialog.dialog != null)
+            dialog.dialog.setVisible(true);
         hideDialog();
     }
     
@@ -90,6 +101,8 @@ public class NetworkDialog extends ADialog {
     }
     
     public class JoinDialog extends acomponent.ADialog {
+        private menus.components.BattleDialog dialog;
+        
         /**
          * Creates new form JoinDialog
          */
@@ -192,8 +205,7 @@ public class NetworkDialog extends ADialog {
                     hideDialog();
                     NetworkDialog.this.hideDialog();
                     // Connect a new BattleDialog to the NetworkAdapter.
-                    menus.components.BattleDialog dialog 
-                            = new menus.components.BattleDialog();
+                    dialog = new menus.components.BattleDialog();
                     // Place the dialog underneath the screen until it's ready to reveal
                     // itself.
                     dialog.setLocationRelativeTo(null);
@@ -328,14 +340,6 @@ public class NetworkDialog extends ADialog {
                 // Wait for a connection for the controller.
                 controller.connect();
                 hideDialog();
-                NetworkDialog.this.hideDialog();
-                // If the controller successfully connected, retrieve the
-                // other Amalgamation.
-                Amalgamation opponent = controller.retrieveAmalgamation();
-                // Create a Battle with the NetworkController as the opposing
-                // controller.
-                menus.components.BattleDialog.startBattle(controller, 
-                        amalgamation, opponent);
             }
             catch (IOException e) {
                 hideDialog();
