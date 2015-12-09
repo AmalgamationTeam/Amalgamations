@@ -395,7 +395,7 @@ public class MainMenu extends javax.swing.JPanel {
                     abilityPanel3.translate((getWidth() - 500)/3, amalgamation.getY() 
                             + amalgamation.getHeight() + 2 * ((300 - 210)/3) + 105, 250);
                     
-                    abilityPanel4 = new menus.components.AbilityPanel(amal.getAbilities()[2]);
+                    abilityPanel4 = new menus.components.AbilityPanel(amal.getAbilities()[3]);
                     abilityPanel4.setEnabled(false);
                     add(abilityPanel4);
                     abilityPanel4.setBounds(abilityPanel1.getBounds());
