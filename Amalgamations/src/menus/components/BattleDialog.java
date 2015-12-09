@@ -250,11 +250,15 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                     ANIMATION_TIME).await();
             
             // Check if either amalgamation is defeated.
-            if (PlayerStatus.getHealth() == 0) {
+            if (PlayerStatus.getHealth() == 0 
+                    && (line.equals(player + " was defeated!") 
+                    || line.contains("tie"))) {
                 PlayerStatus.slideY(1000, ANIMATION_TIME);
                 PlayerPanel.exit().await();
             }
-            if (OpponentStatus.getHealth() == 0) {
+            if (OpponentStatus.getHealth() == 0 
+                    && (line.equals(opponent + " was defeated!") 
+                    || line.contains("tie"))) {
                 OpponentStatus.slideY(1000, ANIMATION_TIME);
                 OpponentPanel.exit().await();
             }
