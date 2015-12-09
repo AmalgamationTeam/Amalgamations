@@ -22,7 +22,7 @@ public class NetworkDialog extends ADialog {
     private Amalgamation amalgamation;
     
     private NetworkDialog(Amalgamation amalgamation) {
-        super(null, false);
+        super(null, true);
         this.amalgamation = amalgamation;
         
         // Add the text to the dialog.
@@ -94,7 +94,7 @@ public class NetworkDialog extends ADialog {
          * Creates new form JoinDialog
          */
         public JoinDialog() {
-            super(null, false);
+            super(null, true);
             initComponents();
             setLocationRelativeTo(null);
             showDialog();
@@ -287,7 +287,7 @@ public class NetworkDialog extends ADialog {
         private NetworkController controller;
         
         public HostDialog() {
-            super(null, false);
+            super(null, true);
             
             // Attempt to create a NetworkController to be connected to by a
             // NetworkAdapter.
