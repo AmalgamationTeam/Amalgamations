@@ -119,6 +119,7 @@ public class MainMenu extends javax.swing.JPanel {
             menus.components.CampaignDialog.startCampaign(null,
                 amalgamation.getAmalgamation());
             audio.loop();
+            updateAmalgamation();
         }
     });
     CampaignButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
@@ -154,6 +155,7 @@ public class MainMenu extends javax.swing.JPanel {
                 (int)NetworkButton.getLocationOnScreen().getY() + NetworkButton.getHeight() / 2
             );
             audio.loop();
+            updateAmalgamation();
         }
     });
     NetworkButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
@@ -438,6 +440,12 @@ public class MainMenu extends javax.swing.JPanel {
                     levelPanel.transform(levelPanel.getWidth() + 150 , 
                             levelPanel.getHeight() , 250);
                 });
+    }
+    
+    // Updates the currently selected Amalgamation.
+    private void updateAmalgamation() {
+        // Swap the Amalgamation out with the updated verdion of itself.
+        swapAmalgamation(amalgamation.getAmalgamation());
     }
     
     public static void main(String[] args) {
