@@ -466,10 +466,17 @@ public class AmalgamationCreatorDialog extends acomponent.ADialog {
     private void save() {
         // Check if the creation is complete.
         if (verifyCreation()) {
-            // Save the creation to a file.
-            Amalgamations.save(body, NameField.getText());
-            // Close the dialog.
-            hideDialog();
+            try{
+                // Save the creation to a file.
+                Amalgamations.save(body, NameField.getText());
+                // Close the dialog.
+                hideDialog();
+            }
+            catch(IllegalArgumentException e) {
+                acomponent.ADialog.createMessageDialog(null, String.format("The "
+                        + "name you entered is "
+                        + "invalid please enter a new name.")).showDialog();
+            }
         }
        
     }
