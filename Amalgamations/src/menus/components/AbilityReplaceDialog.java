@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package menus.components;
 import util.Abilities;
 import amalgamation.Amalgamation;
@@ -23,7 +19,7 @@ public class AbilityReplaceDialog extends acomponent.ADialog {
     /**
      * Creates new form AbilityReplaceDialog
      */
-    private AbilityReplaceDialog(java.awt.Frame parent, 
+    private AbilityReplaceDialog(java.awt.Dialog parent, 
             Amalgamation amalgamation, amalgamation.abilities.Ability ability) {
         super(parent, true);
         initComponents();
@@ -247,7 +243,7 @@ public class AbilityReplaceDialog extends acomponent.ADialog {
      * @param amalgamation the Amalgamation to modify
      * @param ability the Ability to replace with
      */
-    public static void showAbilityReplaceDialog(javax.swing.JFrame parent,
+    public static void showAbilityReplaceDialog(java.awt.Dialog parent,
             Amalgamation amalgamation, Ability ability) {
         // Prompt the user before displaying the dialog.
         if (acomponent.ADialog.createConfirmDialog(parent, 

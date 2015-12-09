@@ -9,7 +9,7 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
     // Shows the user a dialog to choose an Arm to add to the list of Arms.
     private void addArm() {
         // Create a new dialog.
-        acomponent.ADialog dialog = new acomponent.ADialog(this, true);
+        acomponent.ADialog dialog = new acomponent.ADialog(null, true);
         // Add a cancel button to the dialog.
         dialog.addButton("Cancel", e -> dialog.hideDialog());
         // Add a PartListPanel to the dialog.
@@ -40,7 +40,7 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
     // Shows the user a dialog to choose an Arm to add to the list of Bodies.
     private void addBody() {
         // Create a new dialog.
-        acomponent.ADialog dialog = new acomponent.ADialog(this, true);
+        acomponent.ADialog dialog = new acomponent.ADialog(null, true);
         // Add a cancel button to the dialog.
         dialog.addButton("Cancel", e -> dialog.hideDialog());
         // Add a PartListPanel to the dialog.
@@ -71,7 +71,7 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
     // Shows the user a dialog to choose an Arm to add to the list of Arms.
     private void addHead() {
         // Create a new dialog.
-        acomponent.ADialog dialog = new acomponent.ADialog(this, true);
+        acomponent.ADialog dialog = new acomponent.ADialog(null, true);
         // Add a cancel button to the dialog.
         dialog.addButton("Cancel", e -> dialog.hideDialog());
         // Add a PartListPanel to the dialog.
@@ -102,7 +102,7 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
     // Shows the user a dialog to choose an Arm to add to the list of Legs.
     private void addLeg() {
         // Create a new dialog.
-        acomponent.ADialog dialog = new acomponent.ADialog(this, true);
+        acomponent.ADialog dialog = new acomponent.ADialog(null, true);
         // Add a cancel button to the dialog.
         dialog.addButton("Cancel", e -> dialog.hideDialog());
         // Add a PartListPanel to the dialog.
@@ -234,7 +234,7 @@ public class CampaignLevelEditor extends javax.swing.JFrame {
     // boss for the level.
     private void chooseBoss() {
         amalgamation.Amalgamation amalgamation = 
-                menus.components.AmalgamationDialog.showDialog(this);
+                menus.components.AmalgamationDialog.showDialog(null);
         if (amalgamation != null) {
             BossPanel.setAmalgamation(amalgamation);
             BossStat.setAmalgamation(amalgamation);

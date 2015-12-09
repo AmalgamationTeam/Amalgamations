@@ -596,7 +596,7 @@ public class CampaignDialog extends acomponent.ADialog {
      * @param player the Amalgamation the player will control when battling
      *               during Campaign mode.
      */
-    public static void startCampaign(java.awt.Frame parent, Amalgamation player) {
+    public static void startCampaign(java.awt.Dialog parent, Amalgamation player) {
         // Try to play the background audio.
         // Play the background music if possible.
         try {
@@ -723,7 +723,7 @@ public class CampaignDialog extends acomponent.ADialog {
     /**
      * Creates new form CampaignDialog
      */
-    public CampaignDialog(java.awt.Frame parent, Amalgamation playerAmalgamation)
+    public CampaignDialog(java.awt.Dialog parent, Amalgamation playerAmalgamation)
             throws IllegalStateException {
         super(parent, true);
         initComponents();

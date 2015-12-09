@@ -19,7 +19,7 @@ public class AmalgamationDialog extends acomponent.ADialog {
     
     // Creates a new AmalgamationDialog with the given parent.
     // AmalgamationDialogs are always modal.
-    private AmalgamationDialog(javax.swing.JFrame parent) 
+    private AmalgamationDialog(java.awt.Dialog parent) 
             throws java.io.IOException {
         super(parent, true);
         initLayout();
@@ -111,7 +111,7 @@ public class AmalgamationDialog extends acomponent.ADialog {
      *         be found, an error message will appear instead of the dialog
      *         and null will be returned.
      */
-    public static Amalgamation showDialog(javax.swing.JFrame parent) {
+    public static Amalgamation showDialog(java.awt.Dialog parent) {
         try {
             AmalgamationDialog dialog = new AmalgamationDialog(parent);
             dialog.showDialog();

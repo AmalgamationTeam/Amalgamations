@@ -63,25 +63,12 @@ public class NetworkDialog extends ADialog {
     private void host() {
         // Show a new HostDialog.
         HostDialog dialog = new HostDialog();
-                // NetworkDialog.this.hideDialog();
-                // If the controller successfully connected, retrieve the
-                // other Amalgamation.
-                Amalgamation opponent = dialog.controller.retrieveAmalgamation();
-                if (opponent != null)
-                    // Create a Battle with the NetworkController as the opposing
-                    // controller.
-                    menus.components.BattleDialog.startBattle(dialog.controller, 
-                            amalgamation, opponent);
-        hideDialog();
     }
     
     // Prompts the user for the host name and port number and attempts to
     // connect to a server socket.
     private void join() {
         JoinDialog dialog = new JoinDialog();
-        if (dialog.dialog != null)
-            dialog.dialog.setVisible(true);
-        hideDialog();
     }
     
     /**
@@ -107,7 +94,7 @@ public class NetworkDialog extends ADialog {
          * Creates new form JoinDialog
          */
         public JoinDialog() {
-            super(null, true);
+            super(NetworkDialog.this, false);
             initComponents();
             setLocationRelativeTo(null);
             showDialog();
@@ -203,7 +190,6 @@ public class NetworkDialog extends ADialog {
                     HostField.getText(),
                     Integer.parseInt(PortField.getText()))){
                     hideDialog();
-                    NetworkDialog.this.hideDialog();
                     // Connect a new BattleDialog to the NetworkAdapter.
                     dialog = new menus.components.BattleDialog();
                     // Place the dialog underneath the screen until it's ready to reveal
@@ -215,6 +201,7 @@ public class NetworkDialog extends ADialog {
                     adapter.connectController(dialog, amalgamation);
                     // Make the dialog visible.
                     dialog.setVisible(true);
+                    NetworkDialog.this.hideDialog();
                 } catch (java.io.IOException ex) {
                     createMessageDialog(null, "Could not connect to Host!\n"
                         + "Please ensurs the information was correct. If the\n"
@@ -299,7 +286,7 @@ public class NetworkDialog extends ADialog {
         private NetworkController controller;
         
         public HostDialog() {
-            super(null, true);
+            super(NetworkDialog.this, false);
             
             // Attempt to create a NetworkController to be connected to by a
             // NetworkAdapter.
@@ -339,7 +326,15 @@ public class NetworkDialog extends ADialog {
             try {
                 // Wait for a connection for the controller.
                 controller.connect();
+                // If the controller successfully connected, retrieve the
+                // other Amalgamation.
+                Amalgamation opponent = controller.retrieveAmalgamation();
+                    // Create a Battle with the NetworkController as the opposing
+                    // controller.
+                    menus.components.BattleDialog.startBattle(controller, 
+                            amalgamation, opponent);
                 hideDialog();
+                NetworkDialog.this.hideDialog();
             }
             catch (IOException e) {
                 hideDialog();
