@@ -63,7 +63,6 @@ public class NetworkDialog extends ADialog {
     private void host() {
         // Show a new HostDialog.
         HostDialog dialog = new HostDialog();
-        hideDialog();
                 // NetworkDialog.this.hideDialog();
                 // If the controller successfully connected, retrieve the
                 // other Amalgamation.
@@ -73,6 +72,7 @@ public class NetworkDialog extends ADialog {
                     // controller.
                     menus.components.BattleDialog.startBattle(dialog.controller, 
                             amalgamation, opponent);
+        hideDialog();
     }
     
     // Prompts the user for the host name and port number and attempts to
@@ -328,8 +328,8 @@ public class NetworkDialog extends ADialog {
                 // Show the dialog.
                 pack();
                 setLocationRelativeTo(null);
+                new Thread(this::connect).start();
                 showDialog();
-                then(new Thread(this::connect)::start);
             } catch (IOException e) {
                 hideDialog();
             }

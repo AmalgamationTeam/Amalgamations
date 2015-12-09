@@ -110,7 +110,7 @@ public class NetworkController implements AutoCloseable, Controller {
     public Amalgamation retrieveAmalgamation() {
         try {
             return (Amalgamation)in.readObject();
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (ClassNotFoundException | IOException | NullPointerException e) {
             return null;
         }
     }
