@@ -91,13 +91,14 @@ public class StatusPanel extends acomponent.AComponent {
 
         Name.setBackground(new java.awt.Color(255, 255, 255));
         Name.setForeground(new java.awt.Color(244, 67, 54));
+        Name.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
         Name.setText("Name");
 
         javax.swing.GroupLayout NameLayout = new javax.swing.GroupLayout(Name);
         Name.setLayout(NameLayout);
         NameLayout.setHorizontalGroup(
             NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
+            .addGap(0, 233, Short.MAX_VALUE)
         );
         NameLayout.setVerticalGroup(
             NameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +129,7 @@ public class StatusPanel extends acomponent.AComponent {
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(Health, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
