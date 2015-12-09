@@ -15,6 +15,9 @@ public class MainMenu extends javax.swing.JPanel {
     private menus.components.AbilityPanel abilityPanel3;
     private menus.components.AbilityPanel abilityPanel4;
     
+    // The background audio for the main menu.
+    private static final audio.Audio audio = new audio.Audio();
+    
     /**
      * Creates new form MainMenu
      */
@@ -58,8 +61,10 @@ public class MainMenu extends javax.swing.JPanel {
 
         CreateButton.setBackground(new java.awt.Color(244, 67, 54));
         CreateButton.setActionListener(e -> {
+            audio.stop();
             // Create a new Amalgamation.
             menus.components.AmalgamationCreatorDialog.create(null);
+            audio.loop();
         });
         CreateButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
         CreateButton.setText("Create");
@@ -108,10 +113,13 @@ public class MainMenu extends javax.swing.JPanel {
             (int)LoadButton.getLocationOnScreen().getX() + LoadButton.getWidth() / 2,
             (int)LoadButton.getLocationOnScreen().getY() + LoadButton.getHeight() / 2
         );
-        else
-        // Start the campaign with the selected amalgamation.
-        menus.components.CampaignDialog.startCampaign(null,
-            amalgamation.getAmalgamation());
+        else {
+            audio.stop();
+            // Start the campaign with the selected amalgamation.
+            menus.components.CampaignDialog.startCampaign(null,
+                amalgamation.getAmalgamation());
+            audio.loop();
+        }
     });
     CampaignButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
     CampaignButton.setText("Campaign");
@@ -136,14 +144,17 @@ public class MainMenu extends javax.swing.JPanel {
             (int)LoadButton.getLocationOnScreen().getX() + LoadButton.getWidth() / 2,
             (int)LoadButton.getLocationOnScreen().getY() + LoadButton.getHeight() / 2
         );
-        else
-        // Show a new NetworkDialog.
-        menus.components.NetworkDialog.createNetworkDialog(
-            amalgamation.getAmalgamation())
-        .showDialog(
-            (int)NetworkButton.getLocationOnScreen().getX() + NetworkButton.getWidth() / 2,
-            (int)NetworkButton.getLocationOnScreen().getY() + NetworkButton.getHeight() / 2
-        );
+        else {
+            audio.stop();
+            // Show a new NetworkDialog.
+            menus.components.NetworkDialog.createNetworkDialog(
+                amalgamation.getAmalgamation())
+            .showDialog(
+                (int)NetworkButton.getLocationOnScreen().getX() + NetworkButton.getWidth() / 2,
+                (int)NetworkButton.getLocationOnScreen().getY() + NetworkButton.getHeight() / 2
+            );
+            audio.loop();
+        }
     });
     NetworkButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
     NetworkButton.setText("Network");
@@ -441,5 +452,13 @@ public class MainMenu extends javax.swing.JPanel {
         window.setVisible(true);
         
         menu.enter();
+        
+        // Try to play the audio.
+        try {
+            audio.setAudio("res/audio/menu.wav");
+            audio.loop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

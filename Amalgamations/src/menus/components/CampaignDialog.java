@@ -39,6 +39,8 @@ public class CampaignDialog extends acomponent.ADialog {
     private Rectangle           previousBounds;
     private Rectangle           exitBounds;
     private Rectangle           nextBounds;
+    // The audio being played in the background.
+    private static final audio.Audio audio = new audio.Audio();
 
     // Called when the dialog is first displayed. Animates beginning values
     // as appropriate.
@@ -198,8 +200,12 @@ public class CampaignDialog extends acomponent.ADialog {
                 boolean alreadyDefeated = currentLevel.isBossDefeated();
                 // Close the dialog.
                 dialog.hideDialog();
+                // Stop the audio.
+                audio.stop();
                 // Initiate the battle.
                 currentLevel.battleBoss(playerAmalgamation);
+                // Restart the audio.
+                audio.loop();
                 // Check if the minion was defeated for the first time.
                 if (!alreadyDefeated && currentLevel.isBossDefeated()){
                     // See if the next level can be unlocked.
@@ -248,8 +254,12 @@ public class CampaignDialog extends acomponent.ADialog {
                 boolean alreadyDefeated = currentLevel.isGuardDefeated(index);
                 // Close the dialog.
                 dialog.hideDialog();
+                // Stop the audio.
+                audio.stop();
                 // Initiate the battle.
                 currentLevel.battleGuard(index, playerAmalgamation);
+                // Restart the audio.
+                audio.loop();
                
                 // Check if the minion was defeated for the first time.
                 if (!alreadyDefeated && currentLevel.isGuardDefeated(index)){
@@ -299,12 +309,13 @@ public class CampaignDialog extends acomponent.ADialog {
                 boolean alreadyDefeated = currentLevel.isMinionDefeated(index);
                 // Close the dialog.
                 dialog.hideDialog();
+                // Stop the audio.
+                audio.stop();
                 // Initiate the battle.
                 currentLevel.battleMinion(index, playerAmalgamation);
+                // Restart the audio.
+                audio.loop();
                 // Check if the minion was defeated for the first time.
-               
-                    
-                
                 if (!alreadyDefeated && currentLevel.isMinionDefeated(index)) {
                     // See if the guards can be unlocked.
                     setDefeated();
@@ -586,10 +597,22 @@ public class CampaignDialog extends acomponent.ADialog {
      *               during Campaign mode.
      */
     public static void startCampaign(java.awt.Frame parent, Amalgamation player) {
+        // Try to play the background audio.
+        // Play the background music if possible.
+        try {
+            audio.setAudio("res/audio/campaign.wav");
+            audio.loop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         // Create a new CampaignDialog.
         CampaignDialog dialog  = new CampaignDialog(parent, player);
         // Display the dialog.
         dialog.showDialog();
+        
+        // Stop the audio.
+        audio.stop();
     }
     
     // Unlocks the boss if necessary.

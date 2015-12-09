@@ -15,6 +15,10 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
     private static final int    ANIMATION_TIME = 400;
     // The amount of time a line of script stays on the screen.
     private static final int    SCRIPT_PAUSE = 2500;
+    // The audio file to be played when hitting the left player.
+    private static final String HIT_LEFT_AUDIO = "res/audio/hit_left.wav";
+    // The audio file to be played when hitting the right player.
+    private static final String HIT_RIGHT_AUDIO = "res/audio/hit_right.wav";
     // The move chosen to be returned by the chooseMove method.
     private int                 moveChosen;
     // Whether or not the player is ready to advance the script.
@@ -35,6 +39,8 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
     private java.awt.Rectangle  forfeitBounds;
     // A cover to cover the screen when animating in.
     private acomponent.AComponent cover;
+    // The audio to play sound effects in battle.
+    private audio.Audio audio;
     
     // Animates all of the components into place.
     private void animateComponents() {
@@ -140,6 +146,11 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                             new java.awt.Color(76, 175, 80):
                             new java.awt.Color(244, 67, 54)
             );
+            // Play hitting sound effect.
+            try {
+                audio.setAudio(HIT_RIGHT_AUDIO);
+                audio.play();
+            } catch (Exception e) {}
             // Highlight the panel.
             OpponentPanel.highlight(
                     OpponentPanel.getWidth() / 2, 
@@ -162,6 +173,11 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                             new java.awt.Color(76, 175, 80):
                             new java.awt.Color(244, 67, 54)
             );
+            // Play hitting sound effect.
+            try {
+                audio.setAudio(HIT_LEFT_AUDIO);
+                audio.play();
+            } catch (Exception e) {}
             // Highlight the panel.
             PlayerPanel.highlight(
                     PlayerPanel.getWidth() / 2, 
@@ -428,6 +444,15 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
      */
     public static void startBattle(Controller opponent,
             Amalgamation playerAmalgamation, Amalgamation opponentAmalgamation) {
+        // Try to play the background audio.
+        audio.Audio bg = new audio.Audio();
+        try {
+            bg.setAudio("res/audio/battle.wav");
+            bg.loop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         // Create the dialog.
         BattleDialog dialog = new BattleDialog();
         
@@ -442,6 +467,9 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                         .getHeight());
         // Make the dialog visible.
         dialog.setVisible(true);
+        
+        // Stop the audio.
+        bg.stop();
     }
     
     // Removes the cover from the screen. Do not call unless coverScreen has
@@ -484,6 +512,7 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
         super(null, true);
         initComponents();
         setLocationRelativeTo(null);
+        audio = new audio.Audio();
     }
 
     /**

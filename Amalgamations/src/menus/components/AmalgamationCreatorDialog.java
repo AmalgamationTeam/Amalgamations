@@ -14,6 +14,8 @@ import java.awt.Color;
 public class AmalgamationCreatorDialog extends acomponent.ADialog {
     // The Body being constructed in he Dialog.
     private amalgamation.parts.Body body;
+    // The audio played in background.
+    private static final audio.Audio audio = new audio.Audio();
     
     /**
      * Creates new form AmalgamationCreatorDialog
@@ -427,7 +429,19 @@ public class AmalgamationCreatorDialog extends acomponent.ADialog {
      *               closed.
      */
     public static void create(javax.swing.JFrame parent) {
+        // Play the background music if possible.
+        try {
+            audio.setAudio("res/audio/creator.wav");
+            audio.loop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        // Create and show the dialog.
         new AmalgamationCreatorDialog(parent).showDialog();
+        
+        // Stop the audio.
+        audio.stop();
     }
     
     // Randomizes the Amalgamation to give the user inspiration.
