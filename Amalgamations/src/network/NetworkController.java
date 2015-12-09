@@ -36,7 +36,7 @@ public class NetworkController implements AutoCloseable, Controller {
      */
     public NetworkController() throws IOException {
         // Create a new ServerSocket.
-        server = new ServerSocket(0);
+        server = new ServerSocket(26500);
     }
     
     @Override
