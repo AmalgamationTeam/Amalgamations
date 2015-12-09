@@ -153,7 +153,7 @@ public class Amalgamations {
             // Write the created Part to the file.
             out.writeObject(amalgamation);
         } catch (java.io.IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException();
         }
     }
     
