@@ -236,29 +236,36 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
         // Go through the script one line at a time.
         for (String line : script) {
             // Create an ALabel to display the line.
-            acomponent.ALabel label = new acomponent.ALabel(
-                    util.Abilities.cutDelimiter(line));
+            acomponent.AComponent label = new acomponent.AComponent();
+            label.setLayout(new java.awt.BorderLayout());
+            javax.swing.JLabel text = new javax.swing.JLabel(
+                util.Abilities.cutDelimiter(line));
+            text.setFont(new java.awt.Font("Berlin Sans FB Demi", java.awt.Font.BOLD, 18));
+            text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            label.add(text);
             
             // Add the label to the dialog underneath the bottom edge.
             add(label);
             label.setBackground(Color.WHITE);
-            label.setBounds(0, getHeight(), getWidth(), 50);
-            label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            label.setBounds(0, getHeight(), getWidth(), 100);
+            label.validate();
+            //text.setBounds(0, getHeight(), getWidth(), 50);
+            //label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             
             // Animate the label to the center of the screen.
             label.slideY(-getHeight() / 2 - label.getHeight() / 2, 
                     ANIMATION_TIME).await();
             
             // Check if either amalgamation is defeated.
-            if (PlayerStatus.getHealth() == 0 
-                    && (line.equals(player + " was defeated!") 
-                    || line.contains("tie"))) {
+            if ((PlayerPanel.getAmalgamation().getCurrentHealth() == 0 
+                    && (line.equals(player + " was defeated!")) 
+                    || line.equals("It was a tie!"))) {
                 PlayerStatus.slideY(1000, ANIMATION_TIME);
                 PlayerPanel.exit().await();
             }
-            if (OpponentStatus.getHealth() == 0 
-                    && (line.equals(opponent + " was defeated!") 
-                    || line.contains("tie"))) {
+            if ((OpponentPanel.getAmalgamation().getCurrentHealth() == 0 
+                    && (line.equals(opponent + " was defeated!")) 
+                    || line.equals("It was a tie!"))) {
                 OpponentStatus.slideY(1000, ANIMATION_TIME);
                 OpponentPanel.exit().await();
             }
