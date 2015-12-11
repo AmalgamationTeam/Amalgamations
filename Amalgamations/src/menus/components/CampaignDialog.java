@@ -702,6 +702,18 @@ public class CampaignDialog extends acomponent.ADialog {
                     + "playing this game! You're done now.",
                     "YEAH! I'M THE BEST AT EVERYTHING EVER!"
             ).showDialog();
+            
+            // Save the boss Amalgamation as a reward.
+            util.Amalgamations.save(currentLevel.getBoss());
+            createMessageDialog(null,
+                "You have unlocked " 
+                        + currentLevel.getBoss().getName()
+                        + "!\n\n"
+                        + "You can now load it to battle with in the main "
+                        + "menu!",
+                "Awesome!"
+            ).showDialog();
+            
             return;
         }
         
@@ -715,6 +727,17 @@ public class CampaignDialog extends acomponent.ADialog {
                             + "!\n\n"
                             + "You can now advance to the next stage!",
                     "Woohoo!"
+            ).showDialog();
+            
+            // Save the boss Amalgamation as a reward.
+            util.Amalgamations.save(currentLevel.getBoss());
+            createMessageDialog(null,
+                "You have unlocked " 
+                        + currentLevel.getBoss().getName()
+                        + "!\n\n"
+                        + "You can now load it to battle with in the main "
+                        + "menu!",
+                "Awesome!"
             ).showDialog();
         });
     }
