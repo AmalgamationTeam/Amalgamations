@@ -208,7 +208,7 @@
           <Color blue="50" green="af" red="4c" type="rgb"/>
         </Property>
         <Property name="actionListener" type="java.awt.event.ActionListener" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="e -&gt; {&#xa;    // Show a dialog containing the last script.&#xa;    createMessageDialog(&#xa;        null,&#xa;        lastScript,&#xa;        &quot;Done&quot;&#xa;    ).showDialog(&#xa;        EventsButton.getWidth() / 2 &#xa;        + (int)EventsButton.getLocationOnScreen().getX(),&#xa;        EventsButton.getHeight() / 2&#xa;        + (int)EventsButton.getLocationOnScreen().getY()&#xa;    );&#xa;}" type="code"/>
+          <Connection code="e -&gt; {&#xa;    // Show a dialog containing the last script.&#xa;    createMessageDialog(&#xa;        null,&#xa;        lastScript,&#xa;        &quot;Done&quot;&#xa;    ).showDialog(&#xa;        //EventsButton.getWidth() / 2&#xa;        //+ (int)EventsButton.getLocationOnScreen().getX(),&#xa;        //EventsButton.getHeight() / 2&#xa;        //+ (int)EventsButton.getLocationOnScreen().getY()&#xa;    );&#xa;}" type="code"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Berlin Sans FB Demi" size="18" style="1"/>

@@ -240,14 +240,17 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
             label.setLayout(new java.awt.BorderLayout());
             javax.swing.JLabel text = new javax.swing.JLabel(
                 util.Abilities.cutDelimiter(line));
-            text.setFont(new java.awt.Font("Berlin Sans FB Demi", java.awt.Font.BOLD, 18));
+            text.setFont(new java.awt.Font("Berlin Sans FB Demi", java.awt.Font.PLAIN, 18));
             text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             label.add(text);
             
             // Add the label to the dialog underneath the bottom edge.
             add(label);
             label.setBackground(Color.WHITE);
-            label.setBounds(0, getHeight(), getWidth(), 100);
+            label.setBounds(PlayerPanel.getX() + PlayerPanel.getWidth(), 
+                    getHeight(), 
+                    OpponentPanel.getX() - PlayerPanel.getX() - PlayerPanel.getWidth(), 
+                    100);
             label.validate();
             //text.setBounds(0, getHeight(), getWidth(), 50);
             //label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -292,7 +295,9 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                     ANIMATION_TIME).then(() -> remove(label));
             
             // Add the line to the formatted script.
-            formattedScript.append(util.Abilities.cutDelimiter(line))
+            formattedScript.append(util.Abilities.cutDelimiter(line)
+                    .replace("<html>", "")
+                    .replace("</html>", ""))
                     .append("\n");
         }
         
@@ -622,10 +627,10 @@ public class BattleDialog extends acomponent.ADialog implements Controller {
                 lastScript,
                 "Done"
             ).showDialog(
-                EventsButton.getWidth() / 2
-                + (int)EventsButton.getLocationOnScreen().getX(),
-                EventsButton.getHeight() / 2
-                + (int)EventsButton.getLocationOnScreen().getY()
+                //EventsButton.getWidth() / 2
+                //+ (int)EventsButton.getLocationOnScreen().getX(),
+                //EventsButton.getHeight() / 2
+                //+ (int)EventsButton.getLocationOnScreen().getY()
             );
         });
         EventsButton.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N

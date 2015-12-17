@@ -465,6 +465,7 @@ public class ADialog extends javax.swing.JDialog {
                         getWidth(), width, milliseconds, 
                         newWidth -> {
                             setSize((int)newWidth, getHeight());
+                            validate();
                             repaint();
                         }, 
                         null
