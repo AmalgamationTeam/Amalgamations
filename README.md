@@ -31,14 +31,14 @@ Amalgamations are the playable characters in the game. Visually, an Amalgamation
 ![](Amalgamations/res/img/Art/Dinosaur Head.png)
 ![](Amalgamations/res/img/Art/WingedHeel.png)
 
-Parts are the pieces that Amalgamations are made up of. Visually, they are different body parts: Arms, Legs, Heads, and Bodies. An Amalgamation's most distinct characteristics come from what Parts it is made up of. Each Part contributes towards the Amalgamation's overall **Stats** and contains a list of **Abilities** that the Amalgamation may learn due to having the Part.
+Parts are the pieces that Amalgamations are made up of. Visually, they are different body parts: Arms, Legs, Heads, and Bodies. An Amalgamation's most distinct characteristics come from what Parts it is made up of. Each Part contributes towards the Amalgamation's overall **Stats** and contains a list of **Abilities** that the Amalgamation may learn due to having that Part.
 
 ###Ability
 
 ![](Amalgamations/doc/Screenshots/Ability1.png)
 ![](Amalgamations/doc/Screenshots/Ability2.png)
 
-Abilities are the actions that can be performed by Amalgamations in battle. They may be Attacks that will hurt other Amalgamation, or it may just be a regular Ability that powers up the Amalgamation. The Abilities that an Amalgamation can learn are determined by the Parts that make up the Amalgamation. Of the total collection of Abilities that an Amalgamation can learn, only 4 can be known by an Amalgamation at any given time.
+Abilities are the actions that can be performed by Amalgamations in battle. They may be Attacks that will hurt other Amalgamation, or they may just be regular Abilities that power up the Amalgamation. The Abilities that an Amalgamation can learn are determined by the Parts that make up the Amalgamation. Of the total collection of Abilities that an Amalgamation can learn, only 4 can be known by an Amalgamation at any given time.
 
 ###Stats
 
